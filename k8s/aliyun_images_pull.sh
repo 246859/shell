@@ -1,8 +1,9 @@
 #!/bin/bash
 aliyun="registry.aliyuncs.com/google_containers"
 k8sio="registry.k8s.io"
-echo "getting kubeadm used images list"
+echo "pulling needed k8s images from $aliyun"
 kubeadm config images pull --image-repository "$aliyun"
+echo "compare local with $k8sio"
 # list all kubeadm needs images
 for i in $(kubeadm config images list); do
     # get suffxi images name
